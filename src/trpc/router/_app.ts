@@ -1,8 +1,15 @@
 import { initTRPC } from '@trpc/server';
 import { z } from 'zod';
-import { Context } from './context';
+import { Context, createContext } from '../context';
+import superjson from "superjson";
 
-const t = initTRPC.context<Context>().create();
+const t = initTRPC.context<Context>().create({
+    transformer: superjson,
+});
+
+export const middleware = t.middleware;
+export const createCallerFactory = t.createCallerFactory;
+
 
 // App Router Definition
 // NOTE: This will eventually be broken out into multiple routers
@@ -18,6 +25,7 @@ export const appRouter = t.router({
             const rescue = await ctx.prisma.rescue.findUnique({
                 where: { id: input.id },
             });
+            return rescue;
         }),
     createRescue: t.procedure
         .input(z.object({
@@ -37,4 +45,9 @@ export const appRouter = t.router({
         }),
 })
 
+export const createCaller = createCallerFactory(appRouter);
+export const createAsyncCaller = async () => {
+    const context = await createContext();
+    return createCaller(context);
+  };
 export type AppRouter = typeof appRouter;

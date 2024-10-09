@@ -9,13 +9,11 @@ import {
   UserButton
 } from '@clerk/nextjs'
 import { Navbar } from '@/components/ui/navbar'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { trpc, trpcClient } from '@/lib/trpc'
+import TrpcProvider from '@/modules/providers/TrpcProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
 // TRPC Client
-const queryClient = new QueryClient()
 
 
 export const metadata: Metadata = {
@@ -32,8 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ClerkProvider>
-        <QueryClientProvider client={queryClient}>
-          <trpc.Provider client={trpcClient} queryClient={queryClient}>
+        <TrpcProvider>
             <body className={inter.className}>
               <div className="flex flex-col min-h-screen">
                 <Navbar />
@@ -42,8 +39,7 @@ export default function RootLayout({
                 </main>
               </div>
             </body>
-          </trpc.Provider>
-        </QueryClientProvider>
+        </TrpcProvider>
       </ClerkProvider>
   </html>
   )
