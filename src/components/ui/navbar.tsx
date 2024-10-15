@@ -9,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { SignedIn, UserProfile } from "@clerk/nextjs"
+import { SignedIn, UserProfile, UserButton } from "@clerk/nextjs"
 
 export function Navbar() {
   return (
@@ -25,10 +25,10 @@ export function Navbar() {
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                {/* <SignedIn>
-                    <UserProfile />
-                    </SignedIn> */}
-              <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                <SignedIn>
+                    <UserButton />
+                    </SignedIn>
+              {/* <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                 <Image
                   src="/profile.jpg"
                   alt="User avatar"
@@ -36,7 +36,7 @@ export function Navbar() {
                   height={32}
                   className="rounded-full"
                 />
-              </Button>
+              </Button> */}
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem>Profile</DropdownMenuItem>

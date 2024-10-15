@@ -1,6 +1,5 @@
 import { Dog, Home, Settings, Users } from "lucide-react"
 import Link from "next/link"
-
 import {
   Card,
   CardContent,
@@ -8,8 +7,21 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableFooter,
+} from "@/components/ui/table"
+
 
 export default function Dashboard() {
+
+
   return (
     <div className="flex h-[calc(100vh-64px)] bg-gray-100">
       {/* Sidebar - Always visible */}
@@ -79,6 +91,27 @@ export default function Dashboard() {
           </Card>
         </div>
       </div>
+      <Table>
+      <TableCaption>Our Rescues</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Name</TableHead>
+          <TableHead>Species</TableHead>
+          <TableHead className="text-right">Breed</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {data?.map((rescue) => (
+          <TableRow key={rescue.id}>
+            <TableCell>{rescue.name}</TableCell>
+            <TableCell>{rescue.animalType}</TableCell>
+            <TableCell>{rescue.breed}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+      <TableFooter>
+      </TableFooter>
+    </Table>
     </div>
   )
 }

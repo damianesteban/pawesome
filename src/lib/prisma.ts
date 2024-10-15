@@ -1,14 +1,15 @@
 import { PrismaClient } from '@prisma/client';
 
-// Ensure that the PrismaClient is defined globally
-const globalForPrisma = global as unknown as { prisma: PrismaClient };
+const prismaClientSingleton = () => {
+  return new PrismaClient();
+};
 
-// Create a new PrismaClient instance if one doesn't already exist
-export const prisma =
-  globalForPrisma.prisma ||
-  new PrismaClient({
-    log: ['query'], // Optional logging of queries
-  });
+declare global {
+  var prisma: undefined | ReturnType<typeof prismaClientSingleton>;
+}
 
-// Assign the PrismaClient instance to the `global` object if it doesn't already exist
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
+const prisma = globalThis.prisma ?? prismaClientSingleton();
+
+export default prisma;
+
+if (process.env.NODE_ENV !== 'production') globalThis.prisma = prisma;
