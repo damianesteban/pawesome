@@ -2,7 +2,7 @@ import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { Button } from "@/components/ui/button"
-
+import { logout } from '../login/actions'
 
 export default async function Dashboard() {
     const supabase = await createClient()
@@ -17,9 +17,9 @@ export default async function Dashboard() {
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-          {/* <form action={logout}> */}
-            {/* <Button type="submit" variant="outline">Log Out</Button>
-          </form> */}
+          <form action={logout}>
+          <Button type="submit" variant="outline">Log Out</Button>
+          </form>
         </div>
       </header>
 
