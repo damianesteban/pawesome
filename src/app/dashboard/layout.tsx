@@ -3,7 +3,7 @@ import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
-import { logout } from '../login/actions'
+import { logout } from '../actions/auth-actions'
 import {
   Sidebar,
   SidebarContent,
@@ -21,14 +21,6 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode
 }) {
-//   const cookieStore = cookies()
-//   const supabase = createServerComponentClient({ cookies: () => cookieStore })
-
-//   const { data: { session } } = await supabase.auth.getSession()
-
-//   if (!session) {
-//     redirect('/auth/login')
-//   }
 
   return (
     <SidebarProvider>
@@ -43,7 +35,7 @@ export default async function DashboardLayout({
                 <SidebarMenuButton asChild>
                   <Link href="/dashboard/users">
                     <Users className="mr-2 h-4 w-4" />
-                    <span>Users</span>
+                    <span>Adopters</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>

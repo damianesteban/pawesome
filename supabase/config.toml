@@ -122,6 +122,9 @@ secure_password_change = false
 # Controls the minimum amount of time that must pass before sending another signup confirmation or password reset email.
 max_frequency = "1s"
 
+[auth.email.template.invite]
+subject = "You are invited to Pawesome"
+content_path = "./supabase/templates/invite.html"
 # Use a production-ready SMTP server
 # [auth.email.smtp]
 # host = "smtp.sendgrid.net"

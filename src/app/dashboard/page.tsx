@@ -2,7 +2,7 @@ import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { Button } from "@/components/ui/button"
-import { logout } from '../login/actions'
+import { logout } from '../actions/auth-actions'
 
 export default async function Dashboard() {
     const supabase = await createClient()

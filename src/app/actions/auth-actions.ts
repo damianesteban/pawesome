@@ -5,6 +5,10 @@ import { redirect } from 'next/navigation'
 
 import { createClient } from '@/utils/supabase/server'
 
+/**
+ * Login
+ * @param formData 
+ */
 export async function login(formData: FormData) {
   const supabase = await createClient()
 
@@ -25,6 +29,10 @@ export async function login(formData: FormData) {
   redirect('/')
 }
 
+/**
+ * Signup
+ * @param formData 
+ */
 export async function signup(formData: FormData) {
   const supabase = await createClient()
 
@@ -45,6 +53,9 @@ export async function signup(formData: FormData) {
   redirect('/confirm')
 }
 
+/**
+ * Logout
+ */
 export async function logout() {
   const supabase = await createClient()
   await supabase.auth.signOut()
