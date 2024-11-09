@@ -1,3 +1,11 @@
+# Pawesome Rescue and Shelter Management System
+
+This is a full-stack web application built with Next.js, Supabase, and Tailwind CSS. It allows users to manage animals in a rescue and shelter environment.
+
+**The application is currently in development and not all functionality is available.**
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

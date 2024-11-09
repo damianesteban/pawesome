@@ -27,7 +27,7 @@ export default async function DashboardLayout({
       <div className="flex h-screen">
         <Sidebar className="w-64">
           <SidebarHeader>
-            <h2 className="text-xl font-bold">Pet Adoption Dashboard</h2>
+            <h2 className="text-l font-bold">Pawesome Dashboard</h2>
           </SidebarHeader>
           <SidebarContent>
             <SidebarMenu>

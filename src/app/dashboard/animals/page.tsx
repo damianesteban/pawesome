@@ -61,7 +61,7 @@ export default function AnimalsPage() {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-semibold">Animals</h1>
+        <h1 className="text-2xl font-semibold">Animals</h1>
         <Link href="/dashboard/animals/create" passHref>
           <Button>Add New Animal</Button>
         </Link>
