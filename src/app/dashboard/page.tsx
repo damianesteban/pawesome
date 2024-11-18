@@ -7,6 +7,7 @@ import { User } from '@supabase/supabase-js'
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { PawPrint, Users, FileText } from 'lucide-react'
+import { Suspense } from 'react'
 
 type UserInfoProps = {
     user: User | null
@@ -106,16 +107,14 @@ export default async function Dashboard() {
       fetchCount('adoption_requests')
     ])
 
-    // if (error || !data?.user) {
-    //   redirect('/login')
-    // }
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
-
-
-      <UserInfoSection user={data?.user} />
-      <DashboardStatsSection totalAnimals={animalCount} totalAdopters={adopterCount} totalAdoptionRequests={requestCount} />
+      <h1 className="text-3xl font-bold">Home</h1>
+      <Suspense fallback={<DashboardSkeleton />}>
+        <UserInfoSection user={data?.user} />
+        <DashboardStatsSection totalAnimals={animalCount} totalAdopters={adopterCount} totalAdoptionRequests={requestCount} />
+      </Suspense>
     </div>
   )
 }

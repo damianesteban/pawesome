@@ -61,7 +61,9 @@ async function AdoptionRequestList() {
               <TableCell>{request.status}</TableCell>
               <TableCell>{request.notes}</TableCell>
               <TableCell>
-                <Button>View</Button>
+                <Link href={`/dashboard/adoption-requests/${request.id}`} passHref>
+                  <Button variant="outline" size="sm">View Details</Button>
+                </Link>
               </TableCell>
             </TableRow>
           ))}

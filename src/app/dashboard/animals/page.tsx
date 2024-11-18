@@ -31,11 +31,11 @@ async function AnimalList() {
       <TableCaption>A list of animals available for adoption.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead>Name</TableHead>
-          <TableHead>Species</TableHead>
-          <TableHead>Breed</TableHead>
-          <TableHead>Age</TableHead>
-          <TableHead>Actions</TableHead>
+          <TableHead className="w-[200px]">Name</TableHead>
+          <TableHead className="w-[200px]">Species</TableHead>
+          <TableHead className="w-[200px]">Breed</TableHead>
+          <TableHead className="w-[200px]">Age</TableHead>
+          <TableHead className="w-[100px]">Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -63,7 +63,7 @@ export default function AnimalsPage() {
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-semibold">Animals</h1>
         <Link href="/dashboard/animals/create" passHref>
-          <Button>Add New Animal</Button>
+          <Button>Add Animal</Button>
         </Link>
       </div>
       <div className="bg-white shadow-md rounded-lg overflow-hidden">

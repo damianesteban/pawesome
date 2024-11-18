@@ -14,7 +14,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Users, PawPrint, FileText } from 'lucide-react'
+import { Users, PawPrint, FileText, Home } from 'lucide-react'
 
 export default async function DashboardLayout({
   children,
@@ -31,6 +31,14 @@ export default async function DashboardLayout({
           </SidebarHeader>
           <SidebarContent>
             <SidebarMenu>
+            <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href="/dashboard">
+                    <Home className="mr-2 h-4 w-4" />
+                    <span>Home</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link href="/dashboard/users">

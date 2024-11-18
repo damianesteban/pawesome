@@ -21,6 +21,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 import { supabase } from "@/utils/supabase/supabase";
+import Link from "next/link"
 
 export default async function UsersPage() {
     const { data: adopters, error } = await supabase.from("adopters").select("*");
@@ -38,8 +39,9 @@ export default async function UsersPage() {
           <TableHeader>
             <TableRow>
               <TableHead className="w-[200px]">First Name</TableHead>
-              <TableHead className="w-[300px]">Last Name</TableHead>
+              <TableHead className="w-[200px]">Last Name</TableHead>
               <TableHead className="w-[200px]">Email</TableHead>
+              <TableHead className="w-[100px]">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -48,6 +50,11 @@ export default async function UsersPage() {
                 <TableCell className="font-medium">{user.first_name}</TableCell>
                 <TableCell>{user.last_name}</TableCell>
                 <TableCell>{user.email}</TableCell>
+                <TableCell>
+                  <Link href={`/dashboard/users/${user.id}`} passHref>
+                    <Button variant="outline" size="sm">View Details</Button>
+                  </Link>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
